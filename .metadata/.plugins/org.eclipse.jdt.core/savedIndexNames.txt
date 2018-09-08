@@ -1,2 +1,0 @@
-INDEX VERSION 1.130+C:\repos\bootcamp-2018-02-instruction\.metadata\.plugins\org.eclipse.jdt.core
-2973190431.index
