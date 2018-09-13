@@ -1,5 +1,21 @@
+package ui;
 import java.text.NumberFormat;
 
+import business.*;
+import util.Console;
+// this is a single line comment
+
+/*
+ * This is a block comment, but is NOT JAVADOC comment
+ * 
+ */
+
+/**
+ * This is a JAVADOC comment
+ * 
+ * @author snble
+ *
+ */
 public class AccountBalanceApp {
 
 	public static void main(String[] args) {
