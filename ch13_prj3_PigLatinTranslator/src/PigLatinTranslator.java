@@ -7,6 +7,7 @@ public class PigLatinTranslator {
 	
 	public PigLatinTranslator(String englishInput) {
 		this.englishInput = englishInput;
+		pigLatinOutput = "";
 	}
 
 	public String getEnglishInput() {
@@ -47,24 +48,34 @@ public class PigLatinTranslator {
 		// 3) If a word starts with the letter y, the y should
 		//    be treated as a consonant. If the y appears anywhere 
 		//    else in the word,	it should be treated as a vowel.
-		for (String s: words) {
+		for (int i = 0; i< words.length; i++) {
+			String s = words[i];
 			if (startsWithVowel(s)) {
 				s+="way";
 			}
 			else if (!startsWithVowel(s)) {
-				int i = s.indexOf(ch)
+				int v = indexOfFirstVowel(s);
+				String sub1 = s.substring(0,v);
+				String sub2 = s.substring(v,s.length());
+				s = sub2+sub1+"ay";
 			}
+			words[i] = s;
 		}
+		for (String s: words) {
+			pigLatinOutput+=(s+ " ");
+		}
+		
 		return pigLatinOutput;
 	}
 	
 	private int indexOfFirstVowel(String s) {
 		int i = 0;
-		//TODO start here!
-		//for ()
-		if (s.startsWith("a") || s.startsWith("e") || 
-				s.startsWith("i") || s.startsWith("o") || 
-				s.startsWith("u")) {
+
+		for (i=0; i< s.length(); i++) {
+			char c = s.charAt(i);
+			if (c=='a' || c=='e' || c=='i' || c=='o' || c=='u' || c=='y') {
+				break;
+			}
 		}
 		
 		return i;
@@ -88,12 +99,14 @@ public class PigLatinTranslator {
 	}
 	
 	private void removePunctuation() {
-		for (String s: words) {
+		for (int i = 0; i<words.length;i++) {
 			// remove ',' '.' '!' and '?' from end of each word
+			String s = words[i];
 			if (s.endsWith(",")||s.endsWith(".")|| 
 					s.endsWith("!")|| s.endsWith("?")) {
 				int l = s.length();
 				s = s.substring(0,l-1);
+				words[i] = s;
 			}
 		}
 	}
