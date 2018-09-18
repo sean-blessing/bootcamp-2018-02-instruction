@@ -6,3 +6,4 @@ andr	Murach's Android Programming	57.5
 html	Murach's HTML and CSS	54.5
 jscr	Murach's JavaScript and jQuery	54.5
 cobol	Murach's COBOL	40.0
+test	test product	11.11
