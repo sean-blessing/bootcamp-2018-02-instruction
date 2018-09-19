@@ -109,10 +109,5 @@ public class PigLatinTranslator {
 				words[i] = s;
 			}
 		}
-	}
-	
-	
-	
-	
-	
+	}	
 }
