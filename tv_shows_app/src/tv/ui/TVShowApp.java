@@ -88,10 +88,10 @@ public class TVShowApp {
 
 	private static String padReportDetail(String val, int length, String padChar) {
 		StringBuilder sb = new StringBuilder(val);
-		while (sb.length()<length) {
+		while (sb.length()<=length) {
 			sb.append(padChar);
 		}
-		sb.append("  ");
+		//sb.append("  ");
 		return sb.toString();
 	}
 }
