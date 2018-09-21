@@ -2,7 +2,7 @@ package tv.business;
 
 import java.util.List;
 
-public interface ShowDAO {
+public interface ShowDAO extends ShowConstants {
     Show get(String genre);
     Show get(int length);
     List<Show> getAll();
