@@ -1,6 +1,7 @@
 package tv.ui;
 
 import java.awt.DisplayMode;
+import java.util.ArrayList;
 import java.util.List;
 
 import tv.business.Show;
@@ -24,6 +25,27 @@ public class TVShowApp {
 					printReportDetail(s);
 				}
 			}
+			else if (command.equals("2")) {
+				// search by genre or length
+				String criteria = Console.getString("Search by (g)enre or (l)ength? ",
+													"g","l");
+				List<Show> shows = new ArrayList<>();
+				if (criteria.equalsIgnoreCase("g")) {
+					// search by show genre
+					String genre = Console.getString("What type of genre?  Comedy, Sci-Fi, Action, or Drama? ");
+					shows = showDB.get(genre);
+				}
+				else if (criteria.equalsIgnoreCase("l")) {
+					// search by show length
+					int length = Console.getInt("Enter show length?  30, 60, 90? ");
+					shows = showDB.get(length);
+				}
+				
+				System.out.println("Result of search:");
+				for (Show s : shows) {
+					System.out.println(s);
+				}
+			}
 			else if (!command.equals("3")) {
 				System.out.println("Invalid command. Try again.");
 			}
@@ -37,6 +59,7 @@ public class TVShowApp {
 		StringBuilder sb = new StringBuilder();
 		sb.append("COMMAND MENU\n");
 		sb.append("1 - List TV Shows\n");
+		sb.append("2 - List TV Shows by Genre or Length\n");
 		sb.append("3 - Exit\n");
 		System.out.println(sb);
 	}

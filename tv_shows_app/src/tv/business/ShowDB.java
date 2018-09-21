@@ -8,36 +8,56 @@ import tv.util.DBUtil;
 
 public class ShowDB implements ShowDAO {
  
-	private Connection getConnection() throws SQLException {
-		String dbUrl = "jdbc:mysql:localhost:3306/tv_shows";
-		String username = "tv_shows_user";
-		String password = "sesame";
-		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-		}
-		catch (ClassNotFoundException cnfe) {
-			System.out.println(cnfe);
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Connection c = DriverManager.getConnection(dbUrl, username, password);
-		return c;
-	}
-	
 	@Override
-	public Show get(String genre) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Show> get(String genre) {
+		String sql = "select * from tvshow where genre = ?";
+		List<Show> shows = new ArrayList<>();
+		try (Connection connection = DBUtil.getConnection();
+			 PreparedStatement ps = connection.prepareStatement(sql);) {
+			ps.setString(1, genre);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				int id = rs.getInt(1);
+				String name = rs.getString(2);
+				String rating = rs.getString(3);
+				int length = rs.getInt(4);
+				String g = rs.getString(5);
+				String network = rs.getString(6);
+				Show s = new Show(id, name, rating, length, g,
+								network);
+				shows.add(s);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return shows;
 	}
 
 	@Override
-	public Show get(int length) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Show> get(int length) {
+		String sql = "select * from tvshow where length = ?";
+		List<Show> shows = new ArrayList<>();
+		try (Connection connection = DBUtil.getConnection();
+			 PreparedStatement ps = connection.prepareStatement(sql);) {
+			ps.setInt(1, length);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				int id = rs.getInt(1);
+				String name = rs.getString(2);
+				String rating = rs.getString(3);
+				int l = rs.getInt(4);
+				String genre = rs.getString(5);
+				String network = rs.getString(6);
+				Show s = new Show(id, name, rating, l, genre,
+								network);
+				shows.add(s);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return shows;
 	}
 
 	@Override
