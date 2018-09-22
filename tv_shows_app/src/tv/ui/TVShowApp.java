@@ -98,12 +98,6 @@ public class TVShowApp {
 		System.out.println(sb.toString());
 	}
 	
-	private static String getReportHeaders() {
-		StringBuilder sb = new StringBuilder("Name");
-		return sb.toString();
-		
-	}
-
 	private static String padReportDetail(String val, int length) {
 		return padReportDetail(val,length," ");
 	}
