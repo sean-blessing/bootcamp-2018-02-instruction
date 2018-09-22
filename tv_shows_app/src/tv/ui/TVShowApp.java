@@ -85,16 +85,15 @@ public class TVShowApp {
 		sb.append(padReportDetail("",ShowDB.GENRE_LENGTH, "="));
 		sb.append("  ");
 		sb.append(padReportDetail("",ShowDB.NETWORK_LENGTH, "="));
-		sb.append("\n");
 		System.out.println(sb.toString());
 	}
 	
 	private static void printReportDetail(Show s) {
 		// use string builder and add 2 spaces between
-		StringBuilder sb = new StringBuilder(padReportDetail(s.getName(),ShowDB.NAME_LENGTH) + " ");
-		sb.append(padReportDetail(s.getRating(), ShowDB.RATING_LENGTH) + " ");
-		sb.append(padReportDetail(Integer.toString(s.getLength()), ShowDB.LENGTH_LENGTH) + " ");
-		sb.append(padReportDetail(s.getGenre(), ShowDB.GENRE_LENGTH) + " ");
+		StringBuilder sb = new StringBuilder(padReportDetail(s.getName(),ShowDB.NAME_LENGTH) + "  ");
+		sb.append(padReportDetail(s.getRating(), ShowDB.RATING_LENGTH) + "  ");
+		sb.append(padReportDetail(Integer.toString(s.getLength()), ShowDB.LENGTH_LENGTH) + "  ");
+		sb.append(padReportDetail(s.getGenre(), ShowDB.GENRE_LENGTH) + "  ");
 		sb.append(padReportDetail(s.getNetwork(), ShowDB.NETWORK_LENGTH));
 		System.out.println(sb.toString());
 	}
